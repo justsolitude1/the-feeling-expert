@@ -1,0 +1,120 @@
+<!-- ==============================================================
+     AUTHORITY BAND — removed from index.html, kept for later.
+     To restore: paste the CSS block into <style> just above the
+     '/* Steps */' rule, and the markup just above the
+     '07 · WHAT WORKING TOGETHER LOOKS LIKE' section.
+     ============================================================== -->
+
+<style>
+
+/* --------------------------------------------------------------------------
+   Authority band — big display figures, hairline-separated, staggered columns
+   -------------------------------------------------------------------------- */
+.stats{
+  background:var(--tint);
+  padding:calc(var(--section) * 1.15) var(--gutter);
+}
+.stats-inner{
+  max-width:1400px; margin-inline:auto;
+  display:grid; grid-template-columns:1fr 1fr;
+  column-gap:clamp(2.5rem,6vw,6rem);
+}
+/* The hairline between columns, and the stagger that stops the four figures
+   reading as a grid of tiles. */
+.stats-col + .stats-col{
+  border-left:1px solid var(--rule);
+  padding-left:clamp(2.5rem,6vw,6rem);
+  margin-top:clamp(3rem,9vw,9rem);
+}
+.stats .eyebrow{ margin-bottom:1.75rem; }
+/* Fills the gap the staggered columns open up at the top left. */
+.stats-intro{ margin-bottom:clamp(3rem,6vw,5.5rem); max-width:34ch; }
+.stats-intro h2{ font-size:clamp(1.6rem,2.6vw,2.3rem); line-height:1.14; margin:0 0 1rem; }
+.stats-intro p{ margin:0; font-size:1rem; }
+
+.stat{ padding-bottom:clamp(2rem,3.5vw,3.25rem); }
+.stat + .stat{
+  border-top:1px solid var(--rule);
+  padding-top:clamp(2.5rem,5vw,4.5rem);
+}
+.stat .fig{
+  display:flex; align-items:flex-start; gap:.4rem;
+  font-family:var(--f-display); font-weight:400;
+  font-size:clamp(3.75rem,9.5vw,7.5rem); line-height:.92;
+  letter-spacing:-.03em; color:var(--plum);
+  font-variation-settings:'opsz' 144;
+  font-variant-numeric:lining-nums tabular-nums;
+}
+.stat .fig .mark{ flex:none; width:clamp(1.5rem,2.6vw,2.5rem); color:var(--pink); margin-top:.15em; }
+.stat .fig .mark svg{ width:100%; height:auto; overflow:visible; }
+.stat .fig .mark path, .stat .fig .mark line{
+  fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; vector-effect:non-scaling-stroke;
+}
+.stat p{
+  margin:clamp(1.25rem,2.5vw,2rem) 0 0;
+  max-width:34ch; font-size:.98rem; line-height:1.55;
+}
+
+@media (max-width:58.75rem){
+  .stats-inner{ grid-template-columns:1fr; }
+  .stats-col + .stats-col{
+    border-left:0; padding-left:0; margin-top:0;
+    border-top:1px solid var(--rule); padding-top:clamp(2.5rem,5vw,4.5rem);
+  }
+  .stats .eyebrow{ margin-bottom:2.5rem; }
+}
+
+</style>
+
+<!-- ============== AUTHORITY BAND ============== -->
+<section class="stats" id="numbers">
+  <div class="stats-inner">
+
+    <div class="stats-col">
+      <p class="eyebrow fade-up">What I bring<span class="needs">Needs Elyce</span></p>
+
+      <div class="stats-intro fade-up" style="--d:40ms">
+        <h2 class="placeholder">[A short line about what all of this adds up to.]</h2>
+        <p class="placeholder">[One or two sentences in Elyce's voice. Not a second credential list — the reassurance underneath the numbers. What does this much experience actually mean for the woman reading it?]</p>
+      </div>
+
+      <div class="stat fade-up">
+        <span class="fig">
+          <span class="placeholder">[XX]</span>
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40"><path d="M20 2 L23 15 L36 18 L23 21 L20 34 L17 21 L4 18 L17 15 Z"></path></svg>
+          </span>
+        </span>
+        <p>Years helping high-achieving women heal childhood and complex trauma.</p>
+      </div>
+
+      <div class="stat fade-up" style="--d:80ms">
+        <span class="fig">15</span>
+        <p>Minutes on the phone, free and with no obligation, to find out whether I'm the right person to help.</p>
+      </div>
+    </div>
+
+    <div class="stats-col">
+      <div class="stat fade-up" style="--d:40ms">
+        <span class="fig">
+          3
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40">
+              <path d="M8 14 L14 20 L8 26"></path><path d="M22 8 L26 14 L32 16 L26 20 L24 27"></path>
+            </svg>
+          </span>
+        </span>
+        <p>Professional certifications held — Licensed Clinical Mental Health Counselor, Certified IFS Therapist, and International Integral Sound Healing Practitioner.</p>
+      </div>
+
+      <div class="stat fade-up" style="--d:120ms">
+        <span class="fig">
+          <span class="placeholder">[XXX]+</span>
+        </span>
+        <p>Women supported through nervous system regulation, parts work and somatic healing.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+

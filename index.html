@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trauma Therapy for High-Achieving Women | IFS &amp; Nervous System Regulation | Boca Raton, FL</title>
+<meta name="description" content="Trauma therapy for successful women carrying childhood and complex trauma. IFS, nervous system regulation and somatic healing in Boca Raton and online across Florida. Free 15-minute consultation.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Karla:wght@400;500;700&display=swap">
+
+<style>
+/* ==========================================================================
+   THE FEELING EXPERT — built on the Huts scroll + design system
+   --------------------------------------------------------------------------
+   Architecture notes (mirrors huts.com):
+   1.  ONE smoothing layer (Lenis). Every scroll-linked animation is LINEAR
+       and rigidly bound to scroll position. Softness comes from Lenis only.
+   2.  Section heights are DERIVED from content, never hard-coded.
+   3.  Fluid space via clamp() — no breakpoint-based spacing overrides.
+   4.  A 12-column grid expressed as one reusable calc().
+   5.  ONE easing curve everywhere, broken exactly once (the card flip).
+   6.  Hover states are gated on html:not(.lenis-scrolling).
+   Improvements on the reference: reduced-motion support, visible focus
+   rings, lazy loading, honest heading order.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1 · TOKENS
+   -------------------------------------------------------------------------- */
+:root{
+  /* — brand palette (unchanged from the current site) — */
+  --plum:        #92205C;   /* headings */
+  --pink:        #D15AA3;   /* accent */
+  --link:        #AA2167;   /* links */
+  --body:        #6A696F;   /* body copy */
+  --muted:       #A7A7A6;   /* meta */
+  --tint:        #FBEAF3;   /* pale pink blocks */
+  --tint-deep:   #F6DCEB;
+  --surface:     #FFFFFF;   /* cards */
+  --ground:      #FDF8FB;   /* page — a barely-tinted white, not pure #FFF */
+  --ink:         #3A1029;   /* deepest, for scrims */
+
+  /* Huts move: rules are the heading colour at low alpha, never a stray grey */
+  --rule:        rgba(146,32,92,.16);
+  --rule-strong: rgba(146,32,92,.28);
+
+  /* — fluid space: clamp(min, Xvw + Yrem, max) — */
+  --gutter:  clamp(1.5rem, 3.75587vw + 0.619718rem, 4rem);   /*  24 → 64 */
+  --gap:     clamp(1rem,   0.751174vw + 0.823944rem, 1.5rem);/*  16 → 24 */
+  --section: clamp(3rem,   3.38028vw + 2.20775rem, 5.25rem); /*  48 → 84 */
+  --radius:  clamp(16px,   0.751174vw + 13.1831px, 24px);    /*  16 → 24 */
+
+  /* — grid — */
+  --cols: 12;
+
+  /* height of the fixed header; pinned panels pad past it */
+  --header-h: 4.4rem;
+
+  /* — motion: one curve, one exception — */
+  --ease:      cubic-bezier(.33, 1, .68, 1);      /* ease-out-cubic  ×everything */
+  --ease-back: cubic-bezier(.175,.885,.32,1.125); /* ease-out-back   ×card flip only */
+
+  /* — type — */
+  --f-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --f-body:    'Karla', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Column-span helper: width of an N-column span on the fluid grid.
+   Used as  width: calc(var(--span) * N + var(--gap) * (N - 1));           */
+:root{
+  /* --vw is overwritten in JS with documentElement.clientWidth, because 100vw
+     includes the scrollbar and would push every full-width span into overflow. */
+  --vw: 100vw;
+  --span: calc((var(--vw) - (var(--gutter) * 2 + var(--gap) * (var(--cols) - 1))) / var(--cols));
+}
+@media (max-width:58.75rem){ :root{ --cols: 8; } }
+
+/* --------------------------------------------------------------------------
+   2 · RESET + BASE
+   -------------------------------------------------------------------------- */
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--body);
+  font-family:var(--f-body);
+  font-size:clamp(15.5px, 0.35vw + 14.6px, 17px);
+  line-height:1.62;
+  text-wrap:pretty;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  /* NB: never put overflow-x on html/body — any value other than `visible`
+     makes body the scrollport for position:sticky and every pin on the page
+     silently stops working. Horizontal overflow is clipped at its source
+     instead (.h-scroll-container and .pillar). */
+}
+/* Lenis owns vertical scrolling; never let CSS smooth-scroll fight it. */
+html.lenis, html.lenis body{ height:auto; }
+.lenis.lenis-smooth{ scroll-behavior:auto !important; }
+
+img,svg,canvas{ display:block; max-width:100%; }
+button{ font:inherit; color:inherit; }
+
+h1,h2,h3,h4{
+  font-family:var(--f-display);
+  font-weight:400;
+  color:var(--plum);
+  margin:0;
+  text-wrap:balance;
+  font-variation-settings:'opsz' 84;
+}
+/* Type scale — Huts ratios, Fraunces proportions */
+h1{ font-size:clamp(2.5rem, 5.2vw, 4.2rem);  line-height:1.0;  letter-spacing:-.018em; }
+h2{ font-size:clamp(2.1rem, 4.1vw, 3.25rem); line-height:1.06; letter-spacing:-.018em; }
+h3{ font-size:clamp(1.6rem, 2.6vw, 2.3rem);  line-height:1.14; letter-spacing:-.015em; font-variation-settings:'opsz' 48; }
+h4{ font-size:clamp(1.25rem,1.5vw, 1.55rem); line-height:1.26; letter-spacing:-.01em;  font-variation-settings:'opsz' 30; }
+p{ margin:0 0 1.15rem; }
+p:last-child{ margin-bottom:0; }
+a{ color:var(--link); text-decoration:none; transition:color .2s var(--ease); }
+
+/* Focus — authored, not inherited. (The reference ships none.) */
+:focus-visible{
+  outline:2px solid var(--pink);
+  outline-offset:3px;
+  border-radius:3px;
+}
+
+.eyebrow{
+  font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--pink); margin:0 0 1.35rem; display:flex; align-items:center; gap:.6rem;
+}
+.eyebrow::before{
+  content:""; width:6px; height:6px; border-radius:50%; background:var(--pink); flex:none;
+}
+.eyebrow.plain::before{ display:none; }
+
+.lede{ font-size:1.1em; line-height:1.6; }
+
+.wrap{ padding-inline:var(--gutter); }
+.measure{ max-width:min(100%, calc(var(--span) * 7 + var(--gap) * 6)); }
+
+/* Arrow link — the one recurring micro-interaction */
+.arrow-link{
+  display:inline-flex; align-items:baseline; gap:.45em;
+  font-weight:700; font-size:.95rem; color:var(--link);
+}
+.arrow-link .chev{ transition:transform .3s var(--ease); display:inline-block; }
+html:not(.lenis-scrolling) .arrow-link:hover{ color:var(--plum); }
+html:not(.lenis-scrolling) .arrow-link:hover .chev{ transform:translateX(5px); }
+
+/* Buttons */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:1rem 1.75rem; border-radius:999px;
+  background:var(--pink); color:#fff; font-weight:700; font-size:1rem;
+  border:1px solid var(--pink);
+  transition:background .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
+}
+html:not(.lenis-scrolling) .btn:hover{ background:var(--plum); border-color:var(--plum); color:#fff; transform:translateY(-2px); }
+.btn.ghost{ background:transparent; color:var(--plum); border-color:var(--rule-strong); }
+html:not(.lenis-scrolling) .btn.ghost:hover{ background:var(--plum); border-color:var(--plum); color:#fff; }
+.btn.sm{ padding:.7rem 1.25rem; font-size:.88rem; }
+
+/* Tags */
+.tag{
+  display:inline-block; font-size:.72rem; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase;
+  padding:.34rem .7rem; border-radius:999px;
+  background:var(--tint); color:var(--plum);
+}
+.tag.open{ background:transparent; border:1px solid var(--rule); }
+
+/* Author-only flag for unfinished content */
+.needs{
+  display:inline-block; font-family:var(--f-body);
+  font-size:.6rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:#8A5A1E; background:#FBEEDA; border-radius:3px;
+  padding:.2rem .45rem; vertical-align:middle; margin-left:.6em;
+  position:relative; top:-.15em;
+}
+.placeholder{ color:var(--muted); font-style:italic; }
+
+/* --------------------------------------------------------------------------
+   3 · HEADER — four states, exactly as the reference
+   -------------------------------------------------------------------------- */
+#header{
+  position:fixed; inset:0 0 auto 0; z-index:50; width:100%;
+  overflow:hidden;
+  transition:
+    border-radius .4s var(--ease) .2s,
+    background-color .2s var(--ease) .2s,
+    transform .6s var(--ease);
+}
+#header.scrolling:not(.shownav):not(.menu-open){ transform:translateY(-100%); }
+#header.shownav, #header.menu-open{
+  background:var(--ground);
+  border-radius:0 0 var(--radius) var(--radius);
+  transition:border-radius .4s var(--ease), background-color .2s var(--ease);
+}
+@media (hover:hover){
+  #header:hover{
+    background:var(--ground);
+    border-radius:0 0 var(--radius) var(--radius);
+    transition:border-radius .4s var(--ease), background-color .2s var(--ease);
+  }
+}
+.nav-bar{
+  display:grid; grid-template-columns:auto 1fr auto; align-items:center;
+  gap:1.5rem; padding:1.15rem var(--gutter);
+}
+.logo{
+  display:flex; align-items:center; gap:.6rem;
+  font-weight:700; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--plum);
+}
+.logo .dot{ width:8px; height:8px; border-radius:50%; background:var(--pink); }
+.nav-bar nav{ display:flex; justify-content:center; gap:1.75rem; font-size:.92rem; font-weight:500; }
+.nav-bar nav a{ color:var(--body); }
+html:not(.lenis-scrolling) .nav-bar nav a:hover{ color:var(--plum); }
+.nav-actions{ display:flex; align-items:center; gap:.6rem; justify-self:end; }
+.burger{
+  display:none; align-items:center; justify-content:center;
+  width:44px; height:44px; border-radius:50%;
+  border:1px solid var(--rule); background:var(--surface); color:var(--plum);
+  cursor:pointer; padding:0;
+}
+/* Scroll progress hairline */
+#progress{
+  position:fixed; top:0; left:0; height:2px; width:0; background:var(--pink); z-index:60;
+  transform-origin:0 50%;
+}
+
+/* Mobile menu */
+#menu{
+  position:fixed; inset:0; z-index:55; background:var(--ground);
+  display:none; flex-direction:column; padding:1.15rem var(--gutter) 2rem;
+}
+#menu.open{ display:flex; }
+#menu nav{
+  display:flex; flex-direction:column; gap:0; margin-top:2.5rem;
+  font-family:var(--f-display); font-size:2rem;
+}
+#menu nav a{ color:var(--plum); padding:.75rem 0; border-bottom:1px solid var(--rule); }
+
+/* --------------------------------------------------------------------------
+   4 · HERO
+   -------------------------------------------------------------------------- */
+.hero{
+  position:relative; min-height:100svh;
+  display:grid; align-items:center;
+  padding:clamp(7rem,14vh,9.5rem) var(--gutter) var(--section);
+  overflow:clip;
+}
+.hero-field{
+  position:absolute; inset:-10% 0 -10% 0; width:100%; height:120%;
+  z-index:0; pointer-events:none; will-change:transform;
+}
+.hero-inner{
+  position:relative; z-index:1; width:100%; max-width:1240px; margin-inline:auto;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,21rem),1fr));
+  gap:clamp(2.5rem,6vw,5rem); align-items:center;
+}
+.hero h1{ margin:0 0 1.6rem; }
+.hero h1 .accent{ font-style:italic; color:var(--pink); }
+.hero .lede{ max-width:34rem; margin-bottom:2.1rem; }
+.hero-cta{ display:flex; flex-wrap:wrap; align-items:center; gap:1rem 1.4rem; }
+.hero-cta .note{ font-size:.95rem; }
+.creds{
+  margin:2.75rem 0 0; font-size:.7rem; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--muted); line-height:1.95;
+}
+
+/* Line-split reveal (JS wraps each line in .ln > .ln-i) */
+.ln{ display:block; overflow:hidden; }
+.ln-i{ display:block; will-change:transform; }
+.js-split .ln-i{ transform:translateY(105%); opacity:0; }
+.js-split.revealed .ln-i{
+  transform:none; opacity:1;
+  transition:transform .95s var(--ease), opacity .95s var(--ease);
+  transition-delay:calc(var(--i) * 70ms);
+}
+.fade-up{ opacity:0; transform:translateY(20px); }
+.fade-up.revealed{
+  opacity:1; transform:none;
+  transition:opacity .9s var(--ease), transform .9s var(--ease);
+  transition-delay:var(--d, 0ms);
+}
+
+/* --------------------------------------------------------------------------
+   5 · IMAGE SLOTS — designed placeholders, not empty boxes
+   -------------------------------------------------------------------------- */
+.slot{
+  position:relative; border-radius:var(--radius); overflow:clip;
+  background:
+    radial-gradient(120% 90% at 78% 12%, rgba(209,90,163,.20) 0%, rgba(209,90,163,0) 62%),
+    linear-gradient(150deg, var(--tint) 0%, #FFF4FA 55%, var(--tint-deep) 100%);
+  border:1px solid var(--rule);
+  display:grid; place-items:center; text-align:center;
+  padding:2rem;
+}
+.slot img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+/* A filled slot drops its own briefing note. */
+.slot:has(img){ background:var(--tint); }
+.slot:has(img) .slot-note{ display:none; }
+.slot-note{
+  position:relative; max-width:22ch;
+  font-size:.75rem; line-height:1.6; color:var(--plum); opacity:.72;
+}
+.slot-note .ico{
+  display:block; width:30px; height:30px; margin:0 auto .8rem; opacity:.55;
+}
+.slot-note b{
+  display:block; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase;
+  margin-bottom:.45rem; opacity:.7;
+}
+
+/* --------------------------------------------------------------------------
+   6 · CARD SLIDER — the sticky-pin horizontal scrub
+   -------------------------------------------------------------------------- */
+.card-slider{ position:relative; padding-top:var(--section); }
+.card-slider .scroll-content{
+  position:sticky; top:0; height:100svh;
+  /* minmax(0,1fr) is load-bearing: without it the auto column sizes to the
+     track's max-content (~2700px) and stretches the whole section. */
+  display:grid; grid-template-rows:auto 1fr; grid-template-columns:minmax(0,1fr);
+  row-gap:clamp(1.75rem,1.5vw,2.75rem);
+  padding-top:calc(var(--header-h) + clamp(1.25rem,2vw,2.25rem));
+  padding-bottom:clamp(2rem,1.9vw,3.25rem);
+}
+.card-slider .heading-wrapper{ padding-inline:var(--gutter); text-align:center; }
+.card-slider .heading-wrapper .inner{
+  width:min(100%, calc(var(--span) * 8 + var(--gap) * 7));
+  margin-inline:auto;
+}
+.card-slider .heading-wrapper .eyebrow{ justify-content:center; }
+.h-scroll-container{ display:flex; width:100%; min-width:0; overflow-x:clip; }
+.card-slider .heading-wrapper{ min-width:0; }
+.h-scroll-content{
+  display:flex; align-items:stretch;
+  column-gap:var(--gap);
+  padding-inline:var(--gutter);
+  will-change:transform;
+}
+.card-wrapper{
+  display:flex; flex-direction:column; row-gap:1rem; height:100%;
+  width:calc(var(--span) * 4 + var(--gap) * 3);
+}
+@media (max-width:90rem){ .card-wrapper{ width:calc(var(--span) * 5 + var(--gap) * 4); } }
+@media (max-width:68.75rem){ .card-wrapper{ width:calc(var(--span) * 6 + var(--gap) * 5); } }
+@media (max-width:58.75rem){ .card-wrapper{ width:calc(var(--span) * 7 + var(--gap) * 6); } }
+
+.card{ flex:1; perspective:1000px; border-radius:var(--radius); cursor:pointer; }
+.card-inner{
+  position:relative; width:100%; height:100%; border-radius:inherit;
+  transform-style:preserve-3d;
+  transition:transform .8s var(--ease-back);   /* the one deliberate exception */
+}
+.card-front,.card-back{
+  position:absolute; inset:0; border-radius:inherit; overflow:clip;
+  backface-visibility:hidden; will-change:transform;
+  background:var(--surface); border:1px solid var(--rule);
+  display:flex; flex-direction:column; gap:1.1rem;
+  padding:clamp(1.5rem,2.25vw,2.5rem);
+}
+.card-back{ transform:rotateY(180deg); border-color:var(--pink); background:var(--tint); }
+
+/* The reference's sharpest line: no flips while the page is moving. */
+html:not(.lenis-scrolling) .card:hover .card-inner{ transform:rotateY(180deg); }
+html:not(.lenis-scrolling) .card:hover ~ .card-label{ color:var(--pink); }
+
+.card-label{
+  font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted); transition:color .2s var(--ease);
+}
+.card .num{
+  font-size:.72rem; font-weight:700; letter-spacing:.14em; color:var(--pink);
+}
+.card .headline{
+  font-family:var(--f-display); font-size:clamp(1.5rem,2.1vw,2rem);
+  line-height:1.12; letter-spacing:-.015em; color:var(--plum); margin:0;
+  font-variation-settings:'opsz' 42;
+}
+.card-back .qualifier{ font-size:1.02rem; line-height:1.55; color:var(--plum); margin:0; }
+.card .flip-hint{
+  font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);
+}
+/* The mark takes the slack, so cards read the same whatever the panel height. */
+.card-mark{
+  flex:1; min-height:0; width:100%; color:var(--pink); opacity:.9;
+  display:grid; place-items:center;
+}
+.card-mark svg,
+.card-mark img{ width:100%; height:100%; max-height:11.5rem; object-fit:contain; overflow:visible; }
+.card-back .qualifier{ flex:1; min-height:0; display:flex; align-items:center; }
+
+/* Touch: there is no hover, so the flip can't happen. Rather than hide the
+   back — which would drop the qualifier copy from mobile entirely — front
+   and back are merged into one flat card. */
+@media (max-width:58.75rem){
+  .card{ perspective:none; cursor:default; }
+  .card-inner{
+    position:relative; transform:none !important; transform-style:flat;
+    display:flex; flex-direction:column; gap:.9rem; height:100%;
+    background:var(--surface); border:1px solid var(--rule); border-radius:inherit;
+    padding:clamp(1.5rem,2.25vw,2.5rem);
+  }
+  .card-front,.card-back{
+    position:static; inset:auto; padding:0; border:0; background:none;
+    border-radius:0; backface-visibility:visible; overflow:visible;
+  }
+  .card-front{ flex:1; min-height:0; }
+  .card-back{ display:block; transform:none; }
+  /* the number and the hover prompt would only repeat themselves here */
+  .card-back .num,.card .flip-hint{ display:none; }
+  .card-back .qualifier{
+    display:block; font-size:.95rem; line-height:1.5; color:var(--body);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7 · DIVIDER — connective tissue between chapters
+   -------------------------------------------------------------------------- */
+.divider{
+  display:flex; justify-content:center; align-items:center;
+  margin-block:calc(var(--section) / -2);
+  padding-inline:var(--gutter);
+  height:clamp(7rem,11vw,12rem);
+  color:var(--pink); opacity:.55;
+}
+.divider svg{ height:100%; width:auto; max-width:60vw; overflow:visible; }
+/* Non-scaling stroke keeps the line the same visual weight whatever height
+   the clamp resolves to — otherwise it thins out to a hair on small screens. */
+.divider path{
+  fill:none; stroke:currentColor; stroke-width:2.25;
+  stroke-linecap:round; stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+
+/* --------------------------------------------------------------------------
+   8 · BACK & FORTH — alternating text / media
+   -------------------------------------------------------------------------- */
+.back-and-forth{
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(2.5rem,5vw,4.5rem); align-items:center;
+  padding:var(--section) var(--gutter);
+  max-width:1400px; margin-inline:auto;
+}
+.back-and-forth .media{ order:2; }
+.back-and-forth.reverse .media{ order:1; }
+.back-and-forth.reverse .copy{ order:2; }
+.back-and-forth .slot{ aspect-ratio:4/5; width:100%; }
+.back-and-forth .copy{ max-width:34rem; }
+@media (max-width:58.75rem){
+  .back-and-forth{ grid-template-columns:1fr; }
+  .back-and-forth .media,.back-and-forth.reverse .media{ order:1; }
+  .back-and-forth .copy,.back-and-forth.reverse .copy{ order:2; }
+}
+
+/* --------------------------------------------------------------------------
+   9 · PILLARS — pinned panels with dwell time
+       Same sticky-pin mechanic as the card slider: the panel is taller than
+       the viewport, its child pins at top:0 for the difference, and the
+       cover parallaxes behind it. Pure layout — no JS for the pin itself.
+
+       NOTE: the reference's masked-caption trick (.content at 300vh, offset
+       -100vh, revealed by overflow:clip) is deliberately NOT used here. It
+       depends on a SHORT caption over a full-bleed photo; with copy this
+       long you see the top half of one pillar and the bottom half of the
+       next at the same time.
+   -------------------------------------------------------------------------- */
+.pillars{ position:relative; z-index:0; padding-block:var(--section); }
+.pillars > .intro{
+  padding-inline:var(--gutter); text-align:center; margin-bottom:var(--section);
+}
+.pillars > .intro .inner{ width:min(100%, calc(var(--span)*8 + var(--gap)*7)); margin-inline:auto; }
+.pillars > .intro .eyebrow{ justify-content:center; }
+
+/* 170svh = one viewport of panel + 70svh of dwell while it stays pinned. */
+.pillar{ position:relative; height:170svh; display:block; overflow:clip; }
+.pillar .cover{
+  position:absolute; inset:-12.5% 0; width:100%; height:125%;
+  will-change:transform; z-index:0;
+}
+.pillar:nth-child(odd)  .cover{ background:linear-gradient(160deg, #FFF3F9 0%, var(--tint) 48%, var(--tint-deep) 100%); }
+.pillar:nth-child(even) .cover{ background:linear-gradient(200deg, var(--tint-deep) 0%, #FFF0F7 52%, var(--tint) 100%); }
+.pillar .content{ position:absolute; inset:0; z-index:2; }
+.pillar .sticky{
+  position:sticky; top:0; height:100svh;
+  display:grid; grid-template-columns:5fr 6fr; align-items:center;
+  gap:clamp(2rem,4vw,4rem);
+  padding:clamp(5.5rem,9vh,7rem) var(--gutter) clamp(3rem,6vh,4rem);
+}
+.pillar .info{ display:flex; flex-direction:column; gap:1.1rem; }
+.pillar .step{
+  display:flex; align-items:center; gap:.75rem;
+  font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--pink);
+}
+.pillar .step .n{
+  display:grid; place-items:center; width:1.9rem; height:1.9rem; border-radius:50%;
+  border:1px solid var(--pink); font-size:.78rem; letter-spacing:0;
+}
+/* Typographic aside, not a callout box — a panel with a fill and a rule
+   around it reads as a slide deck, which is the one register this page
+   should never be in. */
+.pillar .plain{
+  font-family:var(--f-display); font-style:italic;
+  font-size:clamp(1.05rem,1.35vw,1.28rem); line-height:1.42;
+  letter-spacing:-.005em; color:var(--plum);
+  font-variation-settings:'opsz' 36;
+}
+.pillar .plain b{
+  display:block;
+  font-family:var(--f-body); font-style:normal;
+  font-size:.65rem; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--pink); margin-bottom:.45rem;
+}
+.pillar .info p{ margin:0; }
+/* No card chrome — the illustration is the whole visual now, so a border
+   and panel around it would only fence it in. */
+.pillar .viz{ align-self:center; width:100%; display:grid; place-items:center; }
+/* Pillar illustration — now the panel's entire right-hand column. */
+.viz-art{
+  display:block; width:100%; max-width:34rem;
+  /* height:auto is load-bearing — with only max-height set, a replaced element
+     sized by width:100% inside a grid resolves its height to the max instead
+     of its aspect ratio, letterboxing a square image inside a tall box. */
+  height:auto; max-height:66svh;
+  object-fit:contain; margin:0 auto;
+  transform-origin:50% 55%;
+}
+
+@media (max-width:68.75rem){
+  /* Effect degrades to nothing, gracefully — same as the reference. */
+  .pillar{ height:auto; overflow:visible; }
+  .pillar .cover{ position:absolute; inset:0; height:100%; transform:none !important; }
+  /* Must stay positioned: a static child would paint *under* the absolute
+     cover and the whole caption would disappear. */
+  .pillar .content{ position:relative; inset:auto; height:auto; }
+  .pillar .sticky{
+    position:static; height:auto; grid-template-columns:1fr;
+    padding-block:var(--section);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10 · GENERIC SECTIONS
+   -------------------------------------------------------------------------- */
+.sec{ padding:var(--section) var(--gutter); max-width:1400px; margin-inline:auto; }
+.sec-head{ margin-bottom:clamp(2.5rem,4vw,3.5rem); }
+.sec-head.center{ text-align:center; }
+.sec-head.center .eyebrow{ justify-content:center; }
+.sec-head.center .measure{ margin-inline:auto; }
+
+.cols-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); }
+@media (max-width:68.75rem){ .cols-3{ grid-template-columns:1fr; gap:clamp(1.5rem,3vw,2rem); } }
+
+/* Testimonials: started → work → got to */
+.story{
+  background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius);
+  padding:clamp(1.5rem,2.4vw,2.25rem);
+  display:flex; flex-direction:column; gap:1.4rem;
+}
+.story .stage{ display:flex; flex-direction:column; gap:.45rem; }
+.story .stage b{
+  font-size:.65rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--pink);
+}
+.story blockquote{
+  margin:0; font-family:var(--f-display); font-size:1.15rem; line-height:1.35;
+  color:var(--plum); letter-spacing:-.01em; font-variation-settings:'opsz' 30;
+}
+.story cite{ font-style:normal; font-size:.82rem; color:var(--muted); }
+.story .rule{ height:1px; background:var(--rule); }
+.disclaimer{ font-size:.82rem; color:var(--muted); margin-top:1.75rem; max-width:52rem; }
+
+/* Credentials strip */
+.creds-strip{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap);
+  padding:var(--section) var(--gutter); max-width:1400px; margin-inline:auto;
+  border-top:1px solid var(--rule);
+}
+@media (max-width:58.75rem){ .creds-strip{ grid-template-columns:1fr; } }
+.cred{ display:flex; flex-direction:column; gap:.5rem; }
+.cred .badge{
+  width:2.5rem; height:2.5rem; border-radius:50%; display:grid; place-items:center;
+  background:var(--tint); color:var(--plum); margin-bottom:.35rem;
+}
+.cred h3{ font-size:1.05rem; line-height:1.3; font-variation-settings:'opsz' 24; }
+.cred p{ font-size:.9rem; margin:0; }
+
+/* Steps */
+.step-card{
+  display:flex; flex-direction:column; gap:.8rem;
+  padding-top:1.25rem; border-top:2px solid var(--pink);
+}
+.step-card .n{
+  font-family:var(--f-display); font-size:2.4rem; line-height:1; color:var(--pink);
+  font-variation-settings:'opsz' 48;
+}
+.step-card h3{ font-size:1.2rem; line-height:1.3; font-variation-settings:'opsz' 24; }
+.step-card p{ font-size:.95rem; margin:0; }
+
+/* Panel (fees, session detail) */
+.panel{
+  background:var(--tint); border-radius:var(--radius);
+  padding:clamp(1.75rem,3.4vw,3rem);
+}
+.panel.open{ background:transparent; border:1px solid var(--rule); }
+
+/* Offering + post cards */
+.mini{
+  display:flex; flex-direction:column; gap:.75rem; height:100%;
+  background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius);
+  padding:clamp(1.5rem,2.2vw,2rem);
+  transition:border-color .3s var(--ease), transform .3s var(--ease);
+}
+html:not(.lenis-scrolling) a.mini:hover{ border-color:var(--pink); transform:translateY(-3px); }
+.mini h3{ font-size:1.25rem; line-height:1.25; font-variation-settings:'opsz' 28; }
+.mini p{ font-size:.92rem; margin:0; }
+.mini .foot{ margin-top:auto; padding-top:1rem; }
+.mini .meta{ font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+
+/* Close */
+.close-sec{
+  padding:calc(var(--section) * 1.4) var(--gutter);
+  text-align:center; background:var(--tint);
+}
+.close-sec .inner{ width:min(100%, calc(var(--span)*8 + var(--gap)*7)); margin-inline:auto; }
+.close-sec h2{ margin-bottom:1.5rem; }
+.close-sec .phone{ font-size:1rem; margin-top:1.25rem; }
+.close-sec .phone a{ font-weight:700; }
+
+.crisis{
+  margin-top:clamp(2.5rem,4vw,3.5rem);
+  background:var(--surface); border:1px solid var(--rule-strong); border-radius:var(--radius);
+  padding:clamp(1.25rem,2vw,1.75rem); text-align:left;
+  display:flex; gap:1rem; align-items:flex-start;
+}
+.crisis .ico{ flex:none; color:var(--pink); margin-top:.15rem; }
+.crisis p{ font-size:.92rem; }
+.crisis strong{ color:var(--plum); }
+
+/* Footer */
+footer{ padding:var(--section) var(--gutter) 2.5rem; border-top:1px solid var(--rule); }
+footer .motto{
+  font-family:var(--f-display); font-size:clamp(1.75rem,4vw,3rem); line-height:1.1;
+  color:var(--plum); letter-spacing:-.02em; margin:0 0 var(--section);
+}
+footer .motto em{ font-style:italic; color:var(--pink); }
+.foot-row{
+  display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem 2rem;
+  align-items:center; font-size:.85rem;
+}
+.foot-row nav{ display:flex; flex-wrap:wrap; gap:1.25rem; }
+.foot-row nav a{ color:var(--body); }
+html:not(.lenis-scrolling) .foot-row nav a:hover{ color:var(--plum); }
+.foot-row .legal{ color:var(--muted); }
+
+/* --------------------------------------------------------------------------
+   11 · RESPONSIVE + REDUCED MOTION
+   -------------------------------------------------------------------------- */
+@media (max-width:58.75rem){
+  .nav-bar{ grid-template-columns:auto auto; }
+  .nav-bar nav{ display:none; }
+  .burger{ display:flex; }
+  .cta-long{ display:none; }
+  .cols-3{ grid-template-columns:1fr; }
+
+  /* ---- touch ergonomics ----
+     Standalone links are actions on a phone, not words in a sentence, so
+     they get a real target instead of a 25px-tall strip of text. */
+  .arrow-link{ padding-block:.6rem; }
+  .foot-row nav{ gap:.25rem 1.5rem; }
+  .foot-row nav a{ display:inline-block; padding-block:.65rem; }
+  .logo{ padding-block:.75rem; }
+  .mini .foot{ padding-top:1.25rem; }
+  /* Links sitting inside a sentence can't become blocks without wrecking the
+     paragraph, so the hit area is grown with padding and pulled back with an
+     equal negative margin. Matters most for 988 and the phone number. */
+  .crisis a,
+  .close-sec .phone a,
+  .foot-row .social{
+    display:inline-block;
+    padding:.7rem .3rem;
+    margin:-.7rem -.3rem;
+  }
+
+  /* ---- legibility ----
+     Nothing that carries meaning drops below ~15px. */
+  .mini p,
+  .crisis p{ font-size:.95rem; }
+  .creds{ font-size:.75rem; letter-spacing:.1em; line-height:1.85; }
+  /* These three read as labels but are actually written lines, so they
+     don't get label-sized type. */
+  .card-label{ font-size:.78rem; letter-spacing:.08em; }
+  .disclaimer{ font-size:.88rem; }
+  .crisis p:last-child{ font-size:.9rem; }
+
+  /* The hero already clears the header; 100svh plus that padding overshot. */
+  .hero{ min-height:0; padding-top:calc(var(--header-h) + 2rem); }
+}
+@media (min-width:58.8125rem){ .cta-short{ display:none; } }
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  /* Everything rests at its finished state. */
+  .js-split .ln-i{ transform:none; opacity:1; }
+  .fade-up{ opacity:1; transform:none; }
+  .card-inner{ transform:none !important; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="progress" aria-hidden="true"></div>
+
+<!-- ============================ HEADER ============================ -->
+<header id="header">
+  <div class="nav-bar">
+    <a class="logo" href="#top"><span class="dot" aria-hidden="true"></span>The Feeling Expert</a>
+    <nav aria-label="Primary">
+      <a href="#how">How I help</a>
+      <a href="#about">About</a>
+      <a href="#fees">Fees</a>
+      <a href="#writing">Writing</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn sm" href="#contact">
+        <span class="cta-long">Book a free consult</span>
+        <span class="cta-short">Book</span>
+      </a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="menu">
+  <div class="nav-bar" style="padding-inline:0">
+    <span class="logo"><span class="dot" aria-hidden="true"></span>The Feeling Expert</span>
+    <span></span>
+    <button class="burger" id="burger-close" aria-label="Close menu" style="display:flex">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="#how">How I help</a>
+    <a href="#about">About</a>
+    <a href="#fees">Fees</a>
+    <a href="#writing">Writing</a>
+  </nav>
+  <a class="btn" href="#contact" style="margin-top:auto">Book a free 15-minute consultation</a>
+  <p style="margin:.9rem 0 0; text-align:center; font-size:.9rem">
+    Or call <a href="tel:+18442264325"><strong>(844) 226-4325</strong></a>
+  </p>
+</div>
+
+<main>
+
+<!-- ============================ 01 · HERO ============================ -->
+<section class="hero" id="top">
+  <canvas class="hero-field" id="hero-field" aria-hidden="true"></canvas>
+
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow fade-up" style="--d:80ms">Trauma therapy for high-achieving women · Boca Raton &amp; online across Florida</p>
+
+      <h1 class="js-split" id="hero-h1">You don't have to keep carrying what happened to <span class="accent">you.</span></h1>
+
+      <p class="lede fade-up" style="--d:900ms">You're successful on the outside and exhausted on the inside. I help high-achieving women heal childhood and complex trauma — not by talking about it again, but by working with the nervous system that's still holding it.</p>
+
+      <div class="hero-cta fade-up" style="--d:1050ms">
+        <a class="btn" href="#contact">Book a free 15-minute consultation</a>
+        <span class="note">No pressure. Just a conversation.</span>
+      </div>
+
+      <p class="creds fade-up" style="--d:1200ms">Licensed Clinical Mental Health Counselor · Certified IFS Therapist · International Integral Sound Healing Practitioner</p>
+    </div>
+
+    <div class="fade-up" style="--d:600ms; justify-self:center; width:min(100%,27rem)">
+      <div class="slot" style="aspect-ratio:4/5" data-slot="hero-portrait">
+        <!-- Above the fold: loaded eagerly, high priority. -->
+        <img src="images/elyce-portrait.webp" alt="Elyce, a trauma therapist, seated in her Boca Raton office" fetchpriority="high" decoding="async">
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ================= 02 · IF THIS SOUNDS LIKE YOU — card slider ================= -->
+<section class="card-slider" id="signs" data-slider>
+  <div class="scroll-content">
+    <div class="heading-wrapper">
+      <div class="inner">
+        <p class="eyebrow">If this sounds like you</p>
+        <h2>You're successful, capable, and high-achieving on the outside. But inside, you feel:</h2>
+      </div>
+    </div>
+
+    <div class="h-scroll-container">
+      <div class="h-scroll-content" data-track>
+
+        <!-- card 1 -->
+        <div class="card-wrapper">
+          <div class="card" tabindex="0">
+            <div class="card-inner">
+              <div class="card-front">
+                <span class="num">01</span>
+                <div class="card-mark" aria-hidden="true">
+                  <img src="images/01_constantly_anxious.webp" alt="" loading="lazy" decoding="async" width="475" height="450">
+                </div>
+                <h3 class="headline">Constantly anxious</h3>
+                <span class="flip-hint">Hover to read</span>
+              </div>
+              <div class="card-back">
+                <span class="num">01</span>
+                <p class="qualifier">…even when there's no real threat.</p>
+                <span class="flip-hint">Constantly anxious</span>
+              </div>
+            </div>
+          </div>
+          <span class="card-label">The alarm that never resets</span>
+        </div>
+
+        <!-- card 2 -->
+        <div class="card-wrapper">
+          <div class="card" tabindex="0">
+            <div class="card-inner">
+              <div class="card-front">
+                <span class="num">02</span>
+                <div class="card-mark" aria-hidden="true">
+                  <img src="images/02_disconnected_from_joy.webp" alt="" loading="lazy" decoding="async" width="475" height="450">
+                </div>
+                <h3 class="headline">Disconnected from joy</h3>
+                <span class="flip-hint">Hover to read</span>
+              </div>
+              <div class="card-back">
+                <span class="num">02</span>
+                <p class="qualifier">…even during moments that should feel good.</p>
+                <span class="flip-hint">Disconnected from joy</span>
+              </div>
+            </div>
+          </div>
+          <span class="card-label">Present, but not really there</span>
+        </div>
+
+        <!-- card 3 -->
+        <div class="card-wrapper">
+          <div class="card" tabindex="0">
+            <div class="card-inner">
+              <div class="card-front">
+                <span class="num">03</span>
+                <div class="card-mark" aria-hidden="true">
+                  <img src="images/03_triggered.webp" alt="" loading="lazy" decoding="async" width="475" height="450">
+                </div>
+                <h3 class="headline">Triggered by situations</h3>
+                <span class="flip-hint">Hover to read</span>
+              </div>
+              <div class="card-back">
+                <span class="num">03</span>
+                <p class="qualifier">…that remind you of your past.</p>
+                <span class="flip-hint">Triggered by situations</span>
+              </div>
+            </div>
+          </div>
+          <span class="card-label">The past, arriving uninvited</span>
+        </div>
+
+        <!-- card 4 -->
+        <div class="card-wrapper">
+          <div class="card" tabindex="0">
+            <div class="card-inner">
+              <div class="card-front">
+                <span class="num">04</span>
+                <div class="card-mark" aria-hidden="true">
+                  <img src="images/04_stuck_in_patterns.webp" alt="" loading="lazy" decoding="async" width="475" height="450">
+                </div>
+                <h3 class="headline">Stuck in patterns</h3>
+                <span class="flip-hint">Hover to read</span>
+              </div>
+              <div class="card-back">
+                <span class="num">04</span>
+                <p class="qualifier">…you know aren't serving you, but can't seem to change.</p>
+                <span class="flip-hint">Stuck in patterns</span>
+              </div>
+            </div>
+          </div>
+          <span class="card-label">Knowing isn't the same as changing</span>
+        </div>
+
+        <!-- card 5 -->
+        <div class="card-wrapper">
+          <div class="card" tabindex="0">
+            <div class="card-inner">
+              <div class="card-front">
+                <span class="num">05</span>
+                <div class="card-mark" aria-hidden="true">
+                  <img src="images/05_on_high_alert.webp" alt="" loading="lazy" decoding="async" width="475" height="450">
+                </div>
+                <h3 class="headline">On high alert</h3>
+                <span class="flip-hint">Hover to read</span>
+              </div>
+              <div class="card-back">
+                <span class="num">05</span>
+                <p class="qualifier">…scanning for danger, unable to truly relax.</p>
+                <span class="flip-hint">On high alert</span>
+              </div>
+            </div>
+          </div>
+          <span class="card-label">Always half-watching the room</span>
+        </div>
+
+        <!-- card 6 -->
+        <div class="card-wrapper">
+          <div class="card" tabindex="0">
+            <div class="card-inner">
+              <div class="card-front">
+                <span class="num">06</span>
+                <div class="card-mark" aria-hidden="true">
+                  <img src="images/06_exhausted.webp" alt="" loading="lazy" decoding="async" width="475" height="450">
+                </div>
+                <h3 class="headline">Exhausted</h3>
+                <span class="flip-hint">Hover to read</span>
+              </div>
+              <div class="card-back">
+                <span class="num">06</span>
+                <p class="qualifier">…from carrying the weight of your past while trying to move forward.</p>
+                <span class="flip-hint">Exhausted</span>
+              </div>
+            </div>
+          </div>
+          <span class="card-label">Tired in a way sleep doesn't fix</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bottom padding matters: the divider below pulls up by --section/2, and
+     with no padding here it would ride straight into this line of copy. -->
+<div class="sec" style="padding-top:0; padding-bottom:var(--section); text-align:center">
+  <p class="lede measure fade-up" style="margin-inline:auto; color:var(--plum)">If you recognised yourself in that list, you're in the right place.</p>
+</div>
+
+
+<!-- ============================ DIVIDER ============================ -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 120 150" preserveAspectRatio="xMidYMid meet">
+    <!-- Final control point sits directly above the end point, so the curve
+         lands travelling straight down and the head can be a plain V. -->
+    <path d="M64 8 C 22 40, 100 64, 66 96 C 52 110, 60 112, 60 132"></path>
+    <path d="M50 118 L60 134 L70 118"></path>
+  </svg>
+</div>
+
+
+<!-- ================= 03 · WHY TALK THERAPY HASN'T WORKED ================= -->
+<section class="back-and-forth" id="why">
+  <div class="copy fade-up">
+    <p class="eyebrow">Why talk therapy hasn't worked</p>
+    <h2>You've done the work. So why doesn't it feel any different?</h2>
+    <p style="margin-top:1.5rem">You've tried talk therapy. You've read the books. You understand your trauma intellectually, but your body hasn't gotten the message that you're safe now. That's because trauma isn't just a memory — <strong style="color:var(--plum)">it lives in your nervous system</strong>. And healing it requires a different approach.</p>
+    <p style="margin-top:2rem"><a class="btn" href="#contact">Book a free 15-minute consultation</a></p>
+  </div>
+
+  <div class="media fade-up" style="--d:120ms">
+    <!-- 6/5 matches the source (1370×1148) so nothing is cropped away. -->
+    <div class="slot" style="aspect-ratio:6/5" data-slot="talk-therapy-image">
+      <img src="images/therapy-room.webp" alt="A woman sitting quietly in a therapy room while her therapist takes notes" loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================ DIVIDER ============================ -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 120 150" preserveAspectRatio="xMidYMid meet">
+    <path d="M56 8 C 98 40, 20 64, 54 96 C 68 110, 60 112, 60 132"></path>
+    <path d="M50 118 L60 134 L70 118"></path>
+  </svg>
+</div>
+
+
+<!-- ================= 04 · HOW I HELP — three pinned pillars ================= -->
+<section class="pillars" id="how">
+  <div class="intro fade-up">
+    <div class="inner">
+      <p class="eyebrow">How I help</p>
+      <h2>My three-pillar approach to trauma healing</h2>
+      <p class="lede" style="margin-top:1.25rem">Three things have to happen for trauma to actually lift. We work on all three.</p>
+    </div>
+  </div>
+
+  <!-- ---------- Pillar 1 ---------- -->
+  <article class="pillar" data-pillar="meter">
+    <div class="cover" aria-hidden="true"></div>
+    <div class="content">
+      <div class="sticky">
+        <div class="info">
+          <span class="step"><span class="n">1</span>Nervous system regulation</span>
+          <h3>Restore safety in your body</h3>
+          <div class="plain"><b>In plain terms</b>we teach your body that the danger has passed.</div>
+          <p>Your nervous system holds the memory of your trauma. Through polyvagal-informed therapy and somatic experiencing, we'll help your body finally recognize that the threat is over. You'll learn to regulate your emotions, calm your stress response, and feel grounded in your own skin.</p>
+          <p><a class="arrow-link" href="#contact">Learn more about nervous system regulation <span class="chev">→</span></a></p>
+        </div>
+
+        <div class="viz">
+          <img class="viz-art" src="images/pillar-1-nervous-system.png" alt="Figures carrying different feelings arranged around a glowing heart" decoding="async" width="800" height="800">
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ---------- Pillar 2 ---------- -->
+  <article class="pillar" data-pillar="parts">
+    <div class="cover" aria-hidden="true"></div>
+    <div class="content">
+      <div class="sticky">
+        <div class="info">
+          <span class="step"><span class="n">2</span>Internal Family Systems (IFS)</span>
+          <h3>Heal the parts of you still living in the past</h3>
+          <div class="plain"><b>In plain terms</b>we get to know the inner critic and the people-pleaser instead of fighting them.</div>
+          <p>IFS helps you understand the different parts of yourself — the inner critic, the people-pleaser, the anxious protector. We'll compassionately work with these parts to unburden them from old pain, so you can reconnect with your authentic Self and stop operating from survival mode.</p>
+          <p><a class="arrow-link" href="#contact">Learn more about IFS <span class="chev">→</span></a></p>
+        </div>
+
+        <div class="viz">
+          <img class="viz-art" src="images/pillar-2-ifs-parts.png" alt="A woman with her hands over her heart, surrounded by softer versions of herself carrying different feelings" decoding="async" width="800" height="800">
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ---------- Pillar 3 ---------- -->
+  <article class="pillar" data-pillar="seq">
+    <div class="cover" aria-hidden="true"></div>
+    <div class="content">
+      <div class="sticky">
+        <div class="info">
+          <span class="step"><span class="n">3</span>Holistic trauma healing</span>
+          <h3>Integrate mind, body, and spirit</h3>
+          <div class="plain"><b>In plain terms</b>we use more than talking — sound, breath and movement help release what's stored.</div>
+          <p>True healing happens when we address the whole person. In addition to evidence-based therapy, I integrate sound healing, breathwork, mindfulness, and somatic practices to help release trauma stored in your body and reconnect you with a sense of peace and wholeness.</p>
+          <p><a class="arrow-link" href="#contact">Learn more about holistic healing <span class="chev">→</span></a></p>
+        </div>
+
+        <div class="viz">
+          <img class="viz-art" src="images/pillar-3-holistic.png" alt="Three overlapping circles holding mind, body and spirit around a shared heart" decoding="async" width="800" height="800">
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+
+<!-- ============================ 05 · PROOF ============================ -->
+<section class="sec" id="proof">
+  <div class="sec-head center fade-up">
+    <p class="eyebrow">What changes<span class="needs">Needs Elyce</span></p>
+    <h2 class="measure">Where the women I work with start — and where they get to</h2>
+  </div>
+
+  <div class="cols-3">
+    <article class="story fade-up">
+      <div class="stage">
+        <b>Where she started</b>
+        <blockquote>“I could run a department but I couldn't sit still in my own living room.”</blockquote>
+        <cite>— A., 8 months</cite>
+      </div>
+      <div class="rule"></div>
+      <div class="stage">
+        <b>What the work looked like</b>
+        <p class="placeholder">[One or two sentences naming the approach used — IFS parts work, nervous system regulation.]</p>
+      </div>
+      <div class="rule"></div>
+      <div class="stage">
+        <b>Where she got to</b>
+        <p class="placeholder">[The concrete change. Not “transformed” — something specific she can now do that she couldn't before.]</p>
+      </div>
+    </article>
+
+    <article class="story fade-up" style="--d:80ms">
+      <div class="stage">
+        <b>Where she started</b>
+        <blockquote class="placeholder">“[Her opening line, in her words.]”</blockquote>
+        <cite>— [Initial], [duration]</cite>
+      </div>
+      <div class="rule"></div>
+      <div class="stage">
+        <b>What the work looked like</b>
+        <p class="placeholder">[Approach used.]</p>
+      </div>
+      <div class="rule"></div>
+      <div class="stage">
+        <b>Where she got to</b>
+        <p class="placeholder">[The concrete change.]</p>
+      </div>
+    </article>
+
+    <article class="story fade-up" style="--d:160ms">
+      <div class="stage">
+        <b>Where she started</b>
+        <blockquote class="placeholder">“[Her opening line, in her words.]”</blockquote>
+        <cite>— [Initial], [duration]</cite>
+      </div>
+      <div class="rule"></div>
+      <div class="stage">
+        <b>What the work looked like</b>
+        <p class="placeholder">[Approach used.]</p>
+      </div>
+      <div class="rule"></div>
+      <div class="stage">
+        <b>Where she got to</b>
+        <p class="placeholder">[The concrete change.]</p>
+      </div>
+    </article>
+  </div>
+
+  <p class="disclaimer">Client stories are shared with written permission and all identifying details are changed. Some are composites drawn from common patterns rather than one person.</p>
+</section>
+
+
+<!-- ======================= CREDENTIALS STRIP ======================= -->
+<div class="creds-strip">
+  <div class="cred fade-up">
+    <span class="badge" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+    </span>
+    <h3>IFS Institute Certified Therapist</h3>
+    <p>Trained and certified in Internal Family Systems by the IFS Institute.</p>
+  </div>
+  <div class="cred fade-up" style="--d:80ms">
+    <span class="badge" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="9" r="5"></circle><path d="M8.5 13.5 7 22l5-2.5L17 22l-1.5-8.5"></path></svg>
+    </span>
+    <h3>Certified Trauma Professional</h3>
+    <p>Specialist training in complex and childhood trauma.</p>
+  </div>
+  <div class="cred fade-up" style="--d:160ms">
+    <span class="badge" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 6 9 17l-5-5"></path></svg>
+    </span>
+    <h3>Psychology Today Verified</h3>
+    <p>Licence and credentials independently verified. <a class="arrow-link" href="#contact" style="font-size:inherit">Read reviews <span class="chev">→</span></a></p>
+  </div>
+</div>
+
+
+<!-- ============================ 06 · MEET ELYCE ============================ -->
+<section class="back-and-forth reverse" id="about">
+  <div class="copy fade-up">
+    <p class="eyebrow">Meet Elyce</p>
+    <h2>Hi, I'm Elyce — The Feeling Expert</h2>
+    <p style="margin-top:1.5rem">I'm a Licensed Clinical Mental Health Counselor, a Certified Internal Family Systems Therapist, and an International Integral Sound Healing Practitioner. I specialize in helping high-achieving women heal from complex trauma, regulate their nervous systems, and reconnect with their authentic selves.</p>
+    <p>My approach goes beyond traditional talk therapy. I combine evidence-based methods with holistic healing practices, because true transformation happens when we address trauma at every level — mental, emotional, physical, and spiritual.</p>
+
+    <div class="panel" style="margin-top:1.75rem">
+      <h3 style="font-size:1.15rem; font-variation-settings:'opsz' 24">Why “The Feeling Expert”?<span class="needs">Elyce to confirm</span></h3>
+      <p style="margin-top:.65rem">Because the women I work with are usually experts at everything except feeling. They can analyse, manage, perform and hold it all together. What they've lost is the ability to feel safe in their own body. That's the part I help you get back.</p>
+    </div>
+
+    <p style="margin-top:1.75rem; display:flex; flex-wrap:wrap; gap:1rem 1.75rem">
+      <a class="arrow-link" href="#contact">Read my full story <span class="chev">→</span></a>
+      <a class="arrow-link" href="#contact">Watch the 45-second welcome <span class="chev">→</span></a>
+    </p>
+  </div>
+
+  <div class="media fade-up" style="--d:120ms">
+    <!-- 1200×819 source; the slot matches it so the gong and the spread of
+         bowls survive instead of being cropped to a portrait frame. -->
+    <div class="slot" style="aspect-ratio:1200/819" data-slot="about-portrait">
+      <img src="images/elyce-sound-bowls.webp" alt="Elyce seated among crystal singing bowls, a gong and candlelight in her sound healing room" loading="lazy" decoding="async" width="1200" height="819">
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= 07 · WHAT WORKING TOGETHER LOOKS LIKE ================= -->
+<section class="sec" id="process">
+  <div class="sec-head center fade-up">
+    <p class="eyebrow">What working together looks like</p>
+    <h2>Getting started is simple</h2>
+  </div>
+
+  <div class="cols-3">
+    <div class="step-card fade-up">
+      <span class="n">1</span>
+      <h3>Book your free 15-minute consultation</h3>
+      <p>We'll talk about what you're experiencing and whether we're a good fit. No pressure, just a conversation.</p>
+    </div>
+    <div class="step-card fade-up" style="--d:80ms">
+      <span class="n">2</span>
+      <h3>Choose how we meet</h3>
+      <p>In person at my Boca Raton office, or by video or phone anywhere in Florida — whichever feels safer to start with.</p>
+    </div>
+    <div class="step-card fade-up" style="--d:160ms">
+      <span class="n">3</span>
+      <h3>Begin your first session</h3>
+      <p>We'll start building safety in your nervous system and creating a path forward.</p>
+    </div>
+  </div>
+
+  <div class="panel fade-up" style="margin-top:clamp(2.5rem,4vw,3.5rem)">
+    <h3 style="font-size:1.3rem; font-variation-settings:'opsz' 28">What actually happens in a session<span class="needs">Needs Elyce</span></h3>
+    <p class="placeholder" style="margin-top:.75rem">[Six to eight sentences in Elyce's words: what she asks in the first twenty minutes, what parts work feels like from the inside, whether you'll be asked to close your eyes, what a sound bath physically involves, and what you do not have to talk about.]</p>
+  </div>
+</section>
+
+
+<!-- ============================ 08 · FEES ============================ -->
+<section class="sec" id="fees" style="padding-top:0">
+  <div class="panel open">
+    <div class="sec-head fade-up" style="margin-bottom:1.5rem">
+      <p class="eyebrow">Fees &amp; insurance<span class="needs">Needs Elyce</span></p>
+      <h2>What it costs</h2>
+    </div>
+    <div class="measure fade-up" style="--d:80ms">
+      <p>Individual sessions are <span class="placeholder">$[FEE] for [LENGTH] minutes</span>. I'm out of network, which means you pay me directly — and I do provide superbills for your convenience, so you can claim back from your insurer if your plan covers out-of-network mental health care.</p>
+      <p><span class="placeholder">[Sliding scale sentence, if she offers one.]</span> The 15-minute consultation is free and carries no obligation.</p>
+      <p style="margin-top:1.5rem"><a class="arrow-link" href="#contact">Full fees, insurance and cancellation policy <span class="chev">→</span></a></p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= 09 · GROUPS, EVENTS & FREE GUIDES ================= -->
+<section class="sec" id="offerings">
+  <div class="sec-head center fade-up">
+    <p class="eyebrow">Groups, events &amp; free guides</p>
+    <h2>Other ways to work with me</h2>
+  </div>
+
+  <div class="cols-3">
+    <a class="mini fade-up" href="#contact">
+      <span class="tag">In person · Boca Raton</span>
+      <h3>IFS Group — Tune In Tuesdays</h3>
+      <p>An in-person group session introducing Internal Family Systems. For anyone curious about parts work before committing to 1:1.</p>
+      <span class="foot arrow-link">$75 · next date <span class="chev">→</span></span>
+    </a>
+    <a class="mini fade-up" href="#contact" style="--d:80ms">
+      <span class="tag">Event</span>
+      <h3>Therapeutic Sound Bath</h3>
+      <p>Stress and anxiety relief through sound. No talking required — useful if words are the part you find hardest.</p>
+      <span class="foot arrow-link">$75 <span class="chev">→</span></span>
+    </a>
+    <a class="mini fade-up" href="#contact" style="--d:160ms">
+      <span class="tag open">Free guide</span>
+      <h3>7 Steps to Overcoming Your Limiting Beliefs</h3>
+      <p>A free guide to recognising the beliefs holding you back, and reframing them.</p>
+      <span class="foot arrow-link">Free · sent by email <span class="chev">→</span></span>
+    </a>
+  </div>
+</section>
+
+
+<!-- ============================ 10 · WRITING ============================ -->
+<section class="sec" id="writing">
+  <div class="sec-head fade-up" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:1rem">
+    <div>
+      <p class="eyebrow">Latest writing</p>
+      <h2>Writing from the practice</h2>
+    </div>
+    <a class="arrow-link" href="#contact">Read everything <span class="chev">→</span></a>
+  </div>
+
+  <div class="cols-3">
+    <a class="mini fade-up" href="#contact">
+      <span class="meta placeholder">[date] · [read time]</span>
+      <h3 class="placeholder">[Post title]</h3>
+      <span class="foot arrow-link">Read <span class="chev">→</span></span>
+    </a>
+    <a class="mini fade-up" href="#contact" style="--d:80ms">
+      <span class="meta placeholder">[date] · [read time]</span>
+      <h3 class="placeholder">[Post title]</h3>
+      <span class="foot arrow-link">Read <span class="chev">→</span></span>
+    </a>
+    <a class="mini fade-up" href="#contact" style="--d:160ms">
+      <span class="meta placeholder">[date] · [read time]</span>
+      <h3 class="placeholder">[Post title]</h3>
+      <span class="foot arrow-link">Read <span class="chev">→</span></span>
+    </a>
+  </div>
+</section>
+
+
+<!-- ============================ 11 · CLOSE ============================ -->
+<section class="close-sec" id="contact">
+  <div class="inner">
+    <h2 class="fade-up">Ready when you are.</h2>
+    <p class="lede fade-up measure" style="margin-inline:auto; --d:80ms">You've carried this a long time. Fifteen minutes on the phone costs you nothing and tells you whether I'm the right person to help you put it down.</p>
+    <p class="fade-up measure" style="margin-inline:auto; --d:140ms">And if I'm not — if what you need is outside what I do — I'll say so on that call and point you toward someone better suited. You won't leave that conversation with nowhere to go.</p>
+
+    <p class="fade-up" style="margin-top:2.25rem; --d:200ms"><a class="btn" href="tel:+18442264325">Book a free 15-minute consultation</a></p>
+    <p class="phone fade-up" style="--d:240ms">Or call <a href="tel:+18442264325">(844) 226-4325</a> — that's (844) CAN-HEAL</p>
+
+    <div class="crisis">
+      <span class="ico" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3 2 20h20z"></path><path d="M12 10v4"></path><circle cx="12" cy="17" r=".6" fill="currentColor"></circle></svg>
+      </span>
+      <div>
+        <p><strong>If you're in crisis right now</strong>, please don't wait for an appointment. Call or text <a href="tel:988"><strong>988</strong></a> for the Suicide &amp; Crisis Lifeline, or call <strong>911</strong> if you're in immediate danger.</p>
+        <p style="margin-top:.6rem; font-size:.86rem; color:var(--muted)">This practice isn't a crisis service. I reply to messages during office hours, Monday to Friday.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer>
+  <p class="motto fade-up">Be seen. Be heard. <em>Be you.</em></p>
+  <div class="foot-row">
+    <nav aria-label="Footer">
+      <a href="#how">How I help</a>
+      <a href="#about">About</a>
+      <a href="#fees">Fees</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="legal">© 2026 The Feeling Expert® · Boca Raton, FL</span>
+    <a class="social" href="#contact">@thefeelingexpert</a>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.13/dist/lenis.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp01 = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+
+  /* ======================================================================
+     1 · LENIS — the single smoothing layer
+     ====================================================================== */
+  var lenis = null;
+  if (!REDUCED && window.Lenis) {
+    lenis = new Lenis({
+      touchMultiplier: 20,
+      infinite: false,
+      // Never hijack scrolling inside an overlay.
+      prevent: function (node) { return node.id === 'menu'; }
+    });
+  }
+  window.lenis = lenis;   // exposed for anchor scrolling and future embeds
+
+  /* ======================================================================
+     2 · SCRUB REGISTRY
+     Every scroll-linked animation is LINEAR and bound to scroll position.
+     Softness comes from Lenis alone — never ease a scrub on top of it.
+     ====================================================================== */
+  var scrubs = [];
+  function scrub(el, mode, fn) { if (el) scrubs.push({ el: el, mode: mode, fn: fn }); }
+
+  function progressOf(el, mode) {
+    var r = el.getBoundingClientRect(), vh = window.innerHeight;
+    switch (mode) {
+      // enter "top top" → leave "bottom bottom": the pin range.
+      case 'pin':    return clamp01(-r.top / Math.max(1, r.height - vh));
+      // from first pixel visible to fully past — for parallax.
+      case 'pass':   return clamp01((vh - r.top) / (vh + r.height));
+      // from first pixel visible to panel filling the viewport.
+      case 'arrive': return clamp01((vh - r.top) / vh);
+    }
+    return 0;
+  }
+
+  function tick() {
+    for (var i = 0; i < scrubs.length; i++) {
+      var s = scrubs[i];
+      s.fn(progressOf(s.el, s.mode));
+    }
+  }
+
+  /* ======================================================================
+     3 · HORIZONTAL CARD SCRUB
+     Section height is DERIVED, so vertical scroll ≈ horizontal travel 1:1.
+        height = panelHeight + max(0, trackWidth − sectionWidth)
+     The min(…, 0px) clamp is the responsive guard: on narrow screens the
+     expression turns positive and pins to zero, so no breakpoint branch.
+     ====================================================================== */
+  var sliders = [];
+  document.querySelectorAll('[data-slider]').forEach(function (section) {
+    var track = section.querySelector('[data-track]');
+    var panel = section.querySelector('.scroll-content');
+    if (!track || !panel) return;
+
+    var rec = { section: section, track: track, panel: panel, overflow: 0 };
+    sliders.push(rec);
+
+    scrub(section, 'pin', function (p) {
+      track.style.transform = 'translateX(' + (-p * rec.overflow).toFixed(2) + 'px)';
+    });
+  });
+
+  function layoutSliders() {
+    sliders.forEach(function (r) {
+      r.section.style.height = '';                       // measure natural height first
+      var natural = r.panel.offsetHeight + parseFloat(getComputedStyle(r.section).paddingTop);
+      r.overflow = Math.max(0, r.track.scrollWidth - r.section.clientWidth);
+      r.section.style.height = (natural + r.overflow) + 'px';
+    });
+  }
+
+  /* ======================================================================
+     4 · PILLAR PARALLAX + PANEL VISUALS
+     The caption reveal itself is pure CSS (300vh content, -100vh offset,
+     overflow:clip). Only the cover drift and the diagrams need JS.
+     ====================================================================== */
+  document.querySelectorAll('.pillar').forEach(function (panel) {
+    var cover = panel.querySelector('.cover');
+    if (cover) {
+      // 25% total drift — the reference's whole budget. Restraint is the point.
+      scrub(panel, 'pass', function (p) {
+        cover.style.transform = 'translateY(' + ((p - 0.5) * 25).toFixed(2) + '%)';
+      });
+    }
+
+    /* The illustration settles as the panel arrives — small, so it reads as
+       the art landing rather than as an effect. */
+    var art = panel.querySelector('.viz-art');
+    if (art && !REDUCED) {
+      scrub(panel, 'arrive', function (p) {
+        var e = clamp01((p - 0.05) / 0.55);
+        art.style.transform = 'scale(' + (0.94 + e * 0.06).toFixed(3) + ')';
+        art.style.opacity = (0.35 + e * 0.65).toFixed(3);
+      });
+    }
+  });
+
+  /* ======================================================================
+     5 · HERO — canvas field, line-split headline, measured arrow
+     ====================================================================== */
+  var field = document.getElementById('hero-field');
+  var hero  = document.querySelector('.hero');
+
+  if (hero && field) {
+    scrub(hero, 'pass', function (p) {
+      field.style.transform = 'translateY(' + ((p - 0.5) * 18).toFixed(2) + '%)';
+    });
+  }
+
+  // Soft drifting blobs. One static frame under reduced motion.
+  (function heroField() {
+    if (!field) return;
+    var ctx = field.getContext('2d');
+    // Atmosphere, not a wash. The page ground stays legible; the accent
+    // stays weighted to the bottom-right, as in the current site's hero.
+    var blobs = [
+      { x: .88, y: .86, r: .52, c: [209,  90, 163], a: .15, sx: .00021, sy: .00017 },
+      { x: .12, y: .20, r: .44, c: [251, 234, 243], a: .55, sx: .00016, sy: .00023 },
+      { x: .64, y: .04, r: .34, c: [246, 220, 235], a: .32, sx: .00027, sy: .00013 },
+      { x: .26, y: .94, r: .38, c: [209,  90, 163], a: .06, sx: .00019, sy: .00025 }
+    ];
+    var w = 0, h = 0, raf = null, visible = true;
+
+    function size() {
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var r = field.getBoundingClientRect();
+      w = Math.max(1, r.width); h = Math.max(1, r.height);
+      field.width = Math.round(w * dpr); field.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function draw(t) {
+      ctx.clearRect(0, 0, w, h);
+      var span = Math.max(w, h);
+      for (var i = 0; i < blobs.length; i++) {
+        var b = blobs[i];
+        var cx = (b.x + Math.sin(t * b.sx + i * 1.7) * 0.06) * w;
+        var cy = (b.y + Math.cos(t * b.sy + i * 2.3) * 0.05) * h;
+        var rr = b.r * span;
+        var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, rr);
+        var c = b.c;
+        g.addColorStop(0,  'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + b.a + ')');
+        g.addColorStop(.55,'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (b.a * .35) + ')');
+        g.addColorStop(1,  'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, w, h);
+      }
+    }
+
+    function loop(t) { if (visible) draw(t); raf = requestAnimationFrame(loop); }
+
+    size(); draw(0);
+    if (!REDUCED) {
+      raf = requestAnimationFrame(loop);
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) { visible = es[0].isIntersecting; })
+          .observe(field);
+      }
+    }
+    window.addEventListener('resize', function () { size(); draw(performance.now()); });
+  })();
+
+  /* Line-split reveal — measure word tops, group into lines, wrap, animate.
+     Reverts to plain text for screen readers on completion is unnecessary
+     here because the words stay in document order inside the wrappers.    */
+  function splitLines(el) {
+    if (!el) return;
+    var html = el.innerHTML;
+    // Wrap every word (keeping any inline markup like <span class="accent">).
+    var tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    var words = [];
+    (function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          n.nodeValue.split(/(\s+)/).forEach(function (tk) {
+            if (!tk) return;
+            if (/^\s+$/.test(tk)) { frag.appendChild(document.createTextNode(tk)); return; }
+            var s = document.createElement('span');
+            s.style.display = 'inline-block';
+            s.textContent = tk;
+            words.push(s);
+            frag.appendChild(s);
+          });
+          node.replaceChild(frag, n);
+        } else if (n.nodeType === 1) {
+          if (n.childNodes.length) walk(n);
+        }
+      });
+    })(tmp);
+
+    el.innerHTML = tmp.innerHTML;
+    var live = el.querySelectorAll('span[style*="inline-block"]');
+    if (!live.length) return;
+
+    // Group by vertical offset.
+    var lines = [], last = null;
+    Array.prototype.forEach.call(live, function (s) {
+      var top = s.offsetTop;
+      if (last === null || Math.abs(top - last) > 4) { lines.push([]); last = top; }
+      lines[lines.length - 1].push(s);
+    });
+
+    // Rebuild as .ln > .ln-i wrappers.
+    var out = document.createDocumentFragment();
+    lines.forEach(function (line, i) {
+      var outer = document.createElement('span');
+      outer.className = 'ln';
+      var inner = document.createElement('span');
+      inner.className = 'ln-i';
+      inner.style.setProperty('--i', i);
+      line.forEach(function (s, j) {
+        if (j) inner.appendChild(document.createTextNode(' '));
+        // unwrap the per-word span, but keep any styled ancestor markup
+        var parent = s.parentNode;
+        if (parent && parent !== el && parent.nodeName === 'SPAN' && parent.className) {
+          var clone = parent.cloneNode(false);
+          clone.textContent = s.textContent;
+          inner.appendChild(clone);
+        } else {
+          inner.appendChild(document.createTextNode(s.textContent));
+        }
+      });
+      // Keep a trailing space so copy/paste and screen readers read naturally.
+      if (i < lines.length - 1) inner.appendChild(document.createTextNode(' '));
+      outer.appendChild(inner);
+      out.appendChild(outer);
+    });
+    el.innerHTML = '';
+    el.appendChild(out);
+    requestAnimationFrame(function () { el.classList.add('revealed'); });
+  }
+
+  /* ======================================================================
+     6 · REVEALS — from a visible resting state, gated on reduced motion
+     ====================================================================== */
+  if (!REDUCED && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px' });
+    document.querySelectorAll('.fade-up').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.fade-up').forEach(function (el) { el.classList.add('revealed'); });
+  }
+
+  /* ======================================================================
+     7 · HEADER — hide on scroll down, recall on scroll up or hover
+     ====================================================================== */
+  var header = document.getElementById('header');
+  var progress = document.getElementById('progress');
+  var lastY = 0;
+
+  function headerState(y) {
+    if (!header) return;
+    var down = y > lastY;
+    if (y > 120) {
+      header.classList.add('scrolling');
+      header.classList.toggle('shownav', !down);
+    } else {
+      header.classList.remove('scrolling', 'shownav');
+    }
+    lastY = y;
+
+    if (progress) {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+    }
+  }
+
+  /* Mobile menu */
+  var menu = document.getElementById('menu');
+  function setMenu(open) {
+    if (!menu) return;
+    menu.classList.toggle('open', open);
+    header.classList.toggle('menu-open', open);
+    document.getElementById('burger').setAttribute('aria-expanded', String(open));
+    if (lenis) { open ? lenis.stop() : lenis.start(); }
+  }
+  var burger = document.getElementById('burger');
+  var burgerClose = document.getElementById('burger-close');
+  if (burger) burger.addEventListener('click', function () { setMenu(true); });
+  if (burgerClose) burgerClose.addEventListener('click', function () { setMenu(false); });
+  if (menu) menu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { setMenu(false); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu && menu.classList.contains('open')) setMenu(false);
+  });
+
+  /* Keyboard parity for the hover-flip cards */
+  document.querySelectorAll('.card').forEach(function (card) {
+    card.addEventListener('focus', function () {
+      card.querySelector('.card-inner').style.transform = 'rotateY(180deg)';
+    });
+    card.addEventListener('blur', function () {
+      card.querySelector('.card-inner').style.transform = '';
+    });
+  });
+
+  /* Anchor links routed through Lenis so they land smoothly */
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href');
+      if (id === '#' || id.length < 2) return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(target, { offset: -20 });
+      else target.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth' });
+    });
+  });
+
+  /* ======================================================================
+     8 · BOOT
+     ====================================================================== */
+  function layout() {
+    // Real content width, scrollbar excluded — feeds the column grid.
+    document.documentElement.style.setProperty(
+      '--vw', document.documentElement.clientWidth + 'px');
+    layoutSliders();
+    tick();
+    if (lenis) lenis.resize();
+  }
+
+  function frame(time) {
+    if (lenis) lenis.raf(time);
+    tick();
+    headerState(window.scrollY);
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('load', layout);
+  window.addEventListener('resize', layout);
+
+  // Fonts change line-breaking — re-split and re-measure once they land.
+  function start() {
+    splitLines(document.getElementById('hero-h1'));
+    layout();
+  }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(start);
+  } else {
+    window.addEventListener('load', start);
+  }
+
+  layout();
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

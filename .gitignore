@@ -1,0 +1,9 @@
+# tooling
+node_modules/
+package-lock.json
+package.json
+
+# os
+.DS_Store
+Thumbs.db
+desktop.ini
