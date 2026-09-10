@@ -1,0 +1,4 @@
+# STAGING — remove this file at launch.
+# The site still contains placeholder copy; it must not be indexed yet.
+User-agent: *
+Disallow: /
